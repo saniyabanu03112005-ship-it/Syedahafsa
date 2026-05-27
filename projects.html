@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Projects Showcase of Syeda Hafsa - Python applications, Web Development, and C#.net databases">
+    <title>My Projects | Syeda Hafsa</title>
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Icons (Font Awesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Background Blobs -->
+    <div class="bg-blob-container">
+        <div class="bg-blob blob1"></div>
+        <div class="bg-blob blob2"></div>
+        <div class="bg-blob blob3"></div>
+    </div>
+
+    <!-- Header / Navigation -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Syeda<span>Hafsa.</span></a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="projects.html" class="nav-link">Projects</a></li>
+                <li><a href="education.html" class="nav-link">Education</a></li>
+                <li><a href="certification.html" class="nav-link">Certification</a></li>
+            </ul>
+            <button class="mobile-menu-btn" aria-label="Toggle Navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <!-- Section Header -->
+            <div class="section-header reveal">
+                <span class="section-subtitle">Academic Showcase</span>
+                <h2 class="section-title">My Projects</h2>
+                <div class="section-underline"></div>
+            </div>
+
+            <!-- Filter and Search Bar -->
+            <div class="filter-bar reveal">
+                <!-- Search Box -->
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="projectSearch" placeholder="Search projects by title or skills...">
+                </div>
+
+                <!-- Tabs -->
+                <div class="filter-tabs">
+                    <button class="filter-tab active" data-filter="all">All</button>
+                    <button class="filter-tab" data-filter="python">Python</button>
+                    <button class="filter-tab" data-filter="csharp">C#.net</button>
+                    <button class="filter-tab" data-filter="webdev">Web Tech</button>
+                </div>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="projects-grid reveal delay-1">
+                <!-- Project 1: Python -->
+                <div class="project-card" data-category="python">
+                    <div class="project-tags">
+                        <span class="project-tag">Python</span>
+                        <span class="project-tag teal">OpenCV</span>
+                    </div>
+                    <h3 class="project-card-title">Aura - Face Attendance System</h3>
+                    <p class="project-card-desc">An automated collegiate attendance tracking application utilizing OpenCV face recognition, convolutional neural network classifiers, and direct Excel sheet integration.</p>
+                    <a href="#" class="project-link-btn" data-open-project="aura">
+                        View Details <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Project 2: C# -->
+                <div class="project-card" data-category="csharp">
+                    <div class="project-tags">
+                        <span class="project-tag">C#.net</span>
+                        <span class="project-tag teal">MS SQL Server</span>
+                    </div>
+                    <h3 class="project-card-title">NexDev Inventory System</h3>
+                    <p class="project-card-desc">A professional desktop-based management system featuring admin dashboards, inventory forecasting models, user session authentication, and reporting structures.</p>
+                    <a href="#" class="project-link-btn" data-open-project="nexdev">
+                        View Details <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Project 3: Python -->
+                <div class="project-card" data-category="python">
+                    <div class="project-tags">
+                        <span class="project-tag">Python</span>
+                        <span class="project-tag teal">Data Science</span>
+                    </div>
+                    <h3 class="project-card-title">DataInsight Sales Dashboard</h3>
+                    <p class="project-card-desc">An analytics program utilizing Python Pandas and openpyxl libraries to aggregate complex sales records, parse metadata, and formulate highly styled graphical summaries.</p>
+                    <a href="#" class="project-link-btn" data-open-project="datainsight">
+                        View Details <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Project 4: Web Tech -->
+                <div class="project-card" data-category="webdev">
+                    <div class="project-tags">
+                        <span class="project-tag">HTML5 / CSS3</span>
+                        <span class="project-tag teal">Javascript</span>
+                    </div>
+                    <h3 class="project-card-title">EduPath - Course Platform</h3>
+                    <p class="project-card-desc">A modern, responsive e-learning landing portal containing multi-page layouts, animated course filtration panels, search bars, and interactive modal dialog cards.</p>
+                    <a href="#" class="project-link-btn" data-open-project="edupath">
+                        View Details <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ==========================================================================
+       MODALS: DYNAMIC PROJECT DETAILS MODAL
+       ========================================================================== -->
+    <div class="modal" id="projectModal">
+        <div class="modal-content" style="max-width: 700px;">
+            <span class="modal-close"><i class="fa-solid fa-xmark"></i></span>
+            <div style="padding: 3rem;">
+                <div style="display: flex; gap: 0.8rem; margin-bottom: 1rem;" id="modalProjectTags">
+                    <!-- Dynamic Tags -->
+                </div>
+                <h2 id="modalProjectTitle" style="font-size: 2rem; margin-bottom: 1rem; font-family: 'Outfit';">Project Title</h2>
+                <div class="section-underline" style="margin: 0 0 2rem 0; width: 50px;"></div>
+                
+                <h4 style="color: var(--secondary); font-family: 'Outfit'; margin-bottom: 0.5rem; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.05em;">Project Description</h4>
+                <p id="modalProjectDesc" style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 2rem;">
+                    Detailed explanation of the project.
+                </p>
+
+                <h4 style="color: var(--secondary); font-family: 'Outfit'; margin-bottom: 0.5rem; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.05em;">Key Accomplishments & Features</h4>
+                <ul id="modalProjectFeatures" class="resume-list" style="margin-bottom: 2rem;">
+                    <!-- Dynamic Features -->
+                </ul>
+
+                <h4 style="color: var(--secondary); font-family: 'Outfit'; margin-bottom: 0.5rem; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.05em;">Technology Stack</h4>
+                <div id="modalProjectStack" style="display: flex; flex-wrap: wrap; gap: 0.8rem;">
+                    <!-- Dynamic Tech Badge -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+       MODALS: GLOBAL DIGITAL RESUME MODAL
+       ========================================================================== -->
+    <div class="modal" id="resumeModal">
+        <div class="modal-content">
+            <span class="modal-close"><i class="fa-solid fa-xmark"></i></span>
+            <div class="resume-modal-body">
+                <div class="resume-header">
+                    <h2 class="resume-name">SYEDA HAFSA</h2>
+                    <span class="resume-tagline">BCA Student & Aspiring Developer</span>
+                    <div class="resume-contact-info">
+                        <span><i class="fa-solid fa-envelope"></i> syedahafsa782@gmail.com</span>
+                        <span><i class="fa-solid fa-phone"></i> +91 7619386697</span>
+                        <span><i class="fa-solid fa-location-dot"></i> Tumkur, Karnataka, India</span>
+                    </div>
+                </div>
+
+                <div class="resume-block">
+                    <h3 class="resume-section-title">Career Objective</h3>
+                    <p class="resume-list">To make a meaningful contribution in the organization with the best of my ability and also to develop new skills during interaction to achieve new heights in technology and computer applications.</p>
+                </div>
+
+                <div class="resume-block">
+                    <h3 class="resume-section-title">Academic Qualifications</h3>
+                    <table class="resume-table">
+                        <thead>
+                            <tr>
+                                <th>Qualification</th>
+                                <th>University / Board</th>
+                                <th>Year</th>
+                                <th>Percentage</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>BCA (Sem 4)</td>
+                                <td>Tumkur University</td>
+                                <td>2025</td>
+                                <td>60.00%</td>
+                            </tr>
+                            <tr>
+                                <td>BCA (Sem 3)</td>
+                                <td>Tumkur University</td>
+                                <td>2025</td>
+                                <td>72.90%</td>
+                            </tr>
+                            <tr>
+                                <td>BCA (Sem 2)</td>
+                                <td>Tumkur University</td>
+                                <td>2024</td>
+                                <td>73.00%</td>
+                            </tr>
+                            <tr>
+                                <td>BCA (Sem 1)</td>
+                                <td>Tumkur University</td>
+                                <td>2024</td>
+                                <td>71.00%</td>
+                            </tr>
+                            <tr>
+                                <td>PUC (Class XII)</td>
+                                <td>Karnataka School Exam & Assessment Board</td>
+                                <td>2023</td>
+                                <td>54.44%</td>
+                            </tr>
+                            <tr>
+                                <td>SSLC (Class X)</td>
+                                <td>Karnataka Secondary Education Exam Board</td>
+                                <td>2018</td>
+                                <td>56.64%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="resume-block">
+                    <h3 class="resume-section-title">Technical Skills</h3>
+                    <ul class="resume-list">
+                        <li><strong>Programming Languages:</strong> Python, C Program, C#.net</li>
+                        <li><strong>Core Computer Science:</strong> Data Structures, Operating Systems</li>
+                        <li><strong>Professional Tools:</strong> MS Excel, Computerized Management Accounting (CMA)</li>
+                        <li><strong>Web Competence:</strong> Basic Database & Front-end Development Knowledge</li>
+                    </ul>
+                </div>
+
+                <div class="resume-block">
+                    <h3 class="resume-section-title">Soft Skills & Hobbies</h3>
+                    <ul class="resume-list">
+                        <li><strong>Soft Skills:</strong> Strong communication, logical problem solving, efficient time management, teamwork, and high adaptability.</li>
+                        <li><strong>Hobbies:</strong> Reading and learning new computer skills, listening to music, and drawing in free time.</li>
+                    </ul>
+                </div>
+
+                <div class="resume-block">
+                    <h3 class="resume-section-title">Personal Information</h3>
+                    <div class="resume-personal-grid">
+                        <p><strong>Father's Name:</strong> Syed Nakheeb Ahmed</p>
+                        <p><strong>Date of Birth:</strong> 19th May 2000</p>
+                        <p><strong>Languages Known:</strong> Hindi, English, Kannada, Urdu</p>
+                        <p><strong>Gender / Status:</strong> Female / Unmarried</p>
+                        <p><strong>Nationality:</strong> Indian</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <a href="index.html" class="logo">Syeda<span>Hafsa.</span></a>
+                    <p>Building professional, dynamic web and database interfaces. Student of BCA currently seeking opportunities to apply logic, algorithms, and design skills.</p>
+                    <div class="social-links">
+                        <a href="mailto:syedahafsa782@gmail.com" class="social-btn" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+                        <a href="tel:7619386697" class="social-btn" aria-label="Phone"><i class="fa-solid fa-phone"></i></a>
+                        <a href="#" class="social-btn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="social-btn" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-contact">
+                    <h3 class="footer-contact-title">Let's Connect</h3>
+                    <ul class="footer-contact-list">
+                        <li class="footer-contact-item">
+                            <i class="fa-solid fa-envelope"></i>
+                            <a href="mailto:syedahafsa782@gmail.com">syedahafsa782@gmail.com</a>
+                        </li>
+                        <li class="footer-contact-item">
+                            <i class="fa-solid fa-phone"></i>
+                            <a href="tel:7619386697">+91 7619386697</a>
+                        </li>
+                        <li class="footer-contact-item">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>#16 Bar line main road Tumkur, KARNATAKA - 572101</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 Syeda Hafsa. All Rights Reserved. Designed with <i class="fa-solid fa-heart" style="color: var(--primary);"></i> & animations.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+
+    <!-- Page Specific Script for Searching, Filtering, and Modal details -->
+    <script>
+        const projectData = {
+            aura: {
+                title: "Aura - Face Recognition Attendance System",
+                desc: "An automated college attendance tracking application that replaces manual roll calls with high-speed facial matching. The system captures video frames in real-time, matches the localized faces against a pre-trained database of student profiles, and instantly records timestamps into an excel spreadsheet/database for administrative tracking.",
+                tags: ["Python", "OpenCV"],
+                stack: ["Python 3.10", "OpenCV Library", "NumPy", "Tkinter GUI", "Excel OpenPyXL"],
+                features: [
+                    "Real-time webcam video stream processing and rapid eye/face localization.",
+                    "LBPH (Local Binary Patterns Histograms) algorithm for high-accuracy local matching.",
+                    "Automated export of attendance sheets directly to Microsoft Excel formats.",
+                    "Fully functional Admin Control Panel to register, delete, or search student profiles."
+                ]
+            },
+            nexdev: {
+                title: "NexDev Inventory Management System",
+                desc: "A commercial-grade database management program designed for enterprise product tracking. This application connects a sleek C#.net client container to an optimized Microsoft SQL Server instance, allowing managers to handle transactions, monitor stock lines, and export business charts.",
+                tags: ["C#.net", "MS SQL Server"],
+                stack: ["C# Language", ".NET Framework", "MS SQL Server", "MetroFramework UI", "Entity Framework"],
+                features: [
+                    "Secure cryptographic user login with credential role routing (Admin vs. Operator).",
+                    "Database CRUD routines for registering products, categories, suppliers, and sales.",
+                    "Low-stock threshold triggers that automatically highlight products requiring replenishment.",
+                    "Highly responsive UI dashboard featuring sales metrics and inventory analytics."
+                ]
+            },
+            datainsight: {
+                title: "DataInsight Sales Analysis Dashboard",
+                desc: "An analytical automation tool built to parse, process, and summarize complex business datasets. By applying Python data science libraries directly to legacy Excel registers, it compiles summary stats, sorts data, and injects beautifully formatted data visualizations into spreadsheets.",
+                tags: ["Python", "Data Science"],
+                stack: ["Python 3.9", "Pandas Library", "Matplotlib / Seaborn", "OpenPyXL engine", "MS Excel Data Model"],
+                features: [
+                    "Aggregates and merges multi-sheet transaction books into structured Pandas DataFrames.",
+                    "Cleans missing data, formats data columns, and eliminates duplicate indexes.",
+                    "Generates line charts, bar plots, and categorical reports automatically.",
+                    "Injects custom CSS-styled tables and plots directly back into dynamic Excel reports."
+                ]
+            },
+            edupath: {
+                title: "EduPath - Course & Portal Web Application",
+                desc: "A fully responsive, lightweight educational catalog platform built using vanilla web technologies. Students can browse academic listings, search for modules, filter syllabi, and contact professors through an immersive graphical screen.",
+                tags: ["HTML5 / CSS3", "Javascript"],
+                stack: ["Semantic HTML5", "Vanilla CSS3 Grid & Flexbox", "Modular ES6 Javascript", "FontAwesome 6"],
+                features: [
+                    "100% responsive fluid grid fitting mobile screens, tablets, and widescreen systems.",
+                    "Real-time list filtering and fuzzy keyword searches running purely on client scripts.",
+                    "Sleek visual styling containing glassmorphism overlays and custom SVG decoration patterns.",
+                    "Animated interactive modal details triggering on-click card selection."
+                ]
+            }
+        };
+
+        // DOM elements
+        const searchInput = document.getElementById('projectSearch');
+        const filterTabs = document.querySelectorAll('.filter-tab');
+        const projectCards = document.querySelectorAll('.project-card');
+        const projectModal = document.getElementById('projectModal');
+
+        // Search & Filter functionality
+        function filterProjects() {
+            const query = searchInput.value.toLowerCase().trim();
+            const activeTab = document.querySelector('.filter-tab.active').getAttribute('data-filter');
+
+            projectCards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                const title = card.querySelector('.project-card-title').innerText.toLowerCase();
+                const desc = card.querySelector('.project-card-desc').innerText.toLowerCase();
+                const tags = Array.from(card.querySelectorAll('.project-tag')).map(t => t.innerText.toLowerCase());
+                
+                const matchesTab = (activeTab === 'all' || category === activeTab);
+                const matchesSearch = (title.includes(query) || desc.includes(query) || tags.some(tag => tag.includes(query)));
+
+                if (matchesTab && matchesSearch) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        searchInput.addEventListener('input', filterProjects);
+
+        filterTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                filterTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                filterProjects();
+            });
+        });
+
+        // Detail Modal Opener
+        const detailButtons = document.querySelectorAll('[data-open-project]');
+        detailButtons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const projectId = btn.getAttribute('data-open-project');
+                const data = projectData[projectId];
+
+                if (data) {
+                    // Populate modal contents
+                    document.getElementById('modalProjectTitle').innerText = data.title;
+                    document.getElementById('modalProjectDesc').innerText = data.desc;
+
+                    // Tags
+                    const tagsContainer = document.getElementById('modalProjectTags');
+                    tagsContainer.innerHTML = '';
+                    data.tags.forEach((tag, idx) => {
+                        const tagEl = document.createElement('span');
+                        tagEl.className = `project-tag ${idx % 2 !== 0 ? 'teal' : ''}`;
+                        tagEl.innerText = tag;
+                        tagsContainer.appendChild(tagEl);
+                    });
+
+                    // Features
+                    const featuresContainer = document.getElementById('modalProjectFeatures');
+                    featuresContainer.innerHTML = '';
+                    data.features.forEach(feat => {
+                        const li = document.createElement('li');
+                        li.innerText = feat;
+                        featuresContainer.appendChild(li);
+                    });
+
+                    // Tech Stack
+                    const stackContainer = document.getElementById('modalProjectStack');
+                    stackContainer.innerHTML = '';
+                    data.stack.forEach(tech => {
+                        const badge = document.createElement('span');
+                        badge.className = 'timeline-year';
+                        badge.style.fontSize = '0.75rem';
+                        badge.style.padding = '0.3rem 0.8rem';
+                        badge.style.margin = '0';
+                        badge.innerText = tech;
+                        stackContainer.appendChild(badge);
+                    });
+
+                    // Open Modal
+                    projectModal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
